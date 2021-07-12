@@ -1,0 +1,221 @@
+from time import time
+
+import sys
+
+def frek(n):
+
+    if n==0:
+
+        return 1       
+
+    else:
+
+        return n*frek(n-1)
+
+def fit(n):
+
+    rez=1
+
+    for x in range(1,n+1):
+
+        rez*=rez
+
+    return rez
+
+sys.setrecursionlimit(10000)
+
+n=6000
+
+pocetak=time()
+
+frek(n)
+
+kraj=time()
+
+rezultat=kraj-pocetak
+
+print("Rekurzija je:",rezultat)
+
+pocetak=time()
+
+fit(n)
+
+kraj=time()
+
+rezultat=kraj-pocetak
+
+print("Petlja je:",rezultat)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from time import time
+
+from random import randint
+
+lista=[]
+
+def postaviPolje(n):
+
+    global lista
+
+    lista=list(range(n))
+
+
+
+def binPreRek(lista,clan):
+
+    if len(lista)!=0:
+
+        sredina=len(lista)//2
+
+        if lista[sredina]==clan:
+
+            return True
+
+        else:
+
+            if clan<lista[sredina]:
+
+                return binPreRek(lista[:sredina],clan)
+
+            else:
+
+                return binPreRek(lista[sredina+1:],clan)
+
+    else:
+
+        return False
+
+clan=66666
+
+p=time()
+
+binPreRek(lista,clan)
+
+k=time()
+
+print(p-k)
+
+
+
+def binPreIt(lista,clan):
+
+    dG=0
+
+    gG=len(lista)-1
+
+    nasao=False
+
+    while dG<=gG and not nasao:
+
+        sredina=(dG + gG)//2
+
+        if lista[sredina]==clan:
+
+            nasao=True
+
+        else:
+
+            if clan<lista[sredina]:
+
+                gG=sredina-1
+
+            else:
+
+                dG=sredina+1
+
+                return nasao
+
+p=time()
+
+binPreRek(lista,clan)
+
+k=time()
+
+print(p-k)
+
+
+
+def sekPre(lista,clan):
+
+    for x in lista:
+
+        if x==clan:
+
+            return True
+
+        return False
+
+postaviPolje(10000000)
+
+rez=[["binPreIt",0,0,0,0],["in",0,0,0,0],["sekPre",0,0,0,0],["binPreRek",0,0,0,0]]
+
+for i in range(1,5):
+
+    broj=randint(0,len(lista)-1)
+
+    
+
+p=time()
+
+binPreIt(lista, broj)
+
+k= time()
+
+rez[0][i]=round(k-p,2)
+
+
+
+p=time()
+
+broj in lista
+
+k= time()
+
+rez[1][i]=round(k-p,2)
+
+
+
+p=time()
+
+sekPre(lista,broj)
+
+k= time()
+
+rez[2][i]=round(k-p,2)
+
+
+
+p=time()
+
+binPreRek(lista, broj)
+
+k= time()
+
+rez[3][i]=round(k-p,2)
+
+
+
+for clan in rez:
+
+    print(clan)

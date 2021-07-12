@@ -1,0 +1,161 @@
+import tkinter as tk
+
+def izracun():
+
+    f=int(c.get())*(9/5)+32
+
+    labelaOut.config(text="U s. F to je: "+str(f))
+
+p=tk.Tk()
+
+c=tk.StringVar()
+
+labela=tk.Label(p, text="Unesite temp u C")
+
+labela.grid(column=0,row=0)
+
+unos1=tk.Entry(p,textvariable=c)
+
+unos1.grid(column=0,row=1)
+
+tipka=tk.Button(p,text="Pretvori u F",command=izracun)
+
+tipka.grid(column=0,row=2)
+
+labelaOut=tk.Label(p,text="")
+
+labelaOut.grid(column=0,row=3)
+
+tk.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+import tkinter as tk
+
+
+
+def zbroji():
+
+    f=int(c.get())+int(d.get())
+
+    labelaOut.config(text="Zbroj je: "+str(f))
+
+    
+
+
+
+def oduzmi():
+
+    f=int(c.get())-int(d.get())
+
+    labelaOut.config(text="Razlika je: "+str(f))
+
+
+
+
+
+p=tk.Tk()
+
+c=tk.StringVar()
+
+d=tk.StringVar()
+
+
+
+unos1=tk.Entry(p,textvariable=c)
+
+unos1.grid(column=0,row=0)
+
+unos2=tk.Entry(p,textvariable=d)
+
+unos2.grid(column=0,row=1)
+
+
+
+tipka=tk.Button(p,text="Zbroji",command=zbroji)
+
+tipka.grid(column=0,row=2)
+
+tipka=tk.Button(p,text="Oduzmi",command=oduzmi)
+
+tipka.grid(column=0,row=3)
+
+
+
+labelaOut=tk.Label(p,text="")
+
+labelaOut.grid(column=0,row=4)
+
+
+
+tk.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+import tkinter as tk
+
+from random import randint
+
+from tkinter import messagebox
+
+
+
+tajniB=randint(1,10)
+
+
+
+def usporedi():
+
+    if int(tajniB)==int(c.get()):
+
+        messagebox.showinfo("Odgovor",message="Pogodili ste!")
+
+        p.destroy()
+
+    elif int(tajniB)>int(c.get()):
+
+        messagebox.showinfo("Odgovor",message="Tajni broj je veći!")
+
+        unos1.delete(0)
+
+    else:
+
+        messagebox.showinfo("Odgovor",message="Tajni broj je manji!")
+
+        unos1.delete(0)       
+
+
+
+p=tk.Tk()
+
+c=tk.StringVar()
+
+unos1=tk.Entry(p,textvariable=c)
+
+unos1.grid(column=0,row=0)
+
+tipka=tk.Button(p,text="Je li to tajni broj?",command=usporedi)
+
+tipka.grid(column=0,row=2)
+
+
+
+tk.mainloop()

@@ -1,0 +1,157 @@
+from time import time
+
+def o1(n):
+
+    1+1
+
+    
+
+def olog(n):
+
+    while n>0:
+
+        1+1
+
+        n//=2
+
+        
+
+def on(n):
+
+    while n>0:
+
+        1+1
+
+        n-=1
+
+        
+
+def onlogn(n):
+
+    m=n
+
+    while n>0:
+
+        n-=1
+
+    while m>0:
+
+        1+1
+
+        m//=2
+
+        
+
+def osqr(n):
+
+    m=n
+
+    while n>0:
+
+        n-=1
+
+        while m>0:
+
+            1+1
+
+            m-=1
+
+            
+
+def ocube(n):
+
+    m=a=n
+
+    while n>0:
+
+        n-=1
+
+        while m>0:
+
+            m-=1
+
+            while a>0:
+
+                1+1
+
+                a-=1
+
+                
+
+def oexp(n):
+
+    u=1
+
+    while n>0:
+
+        n-=1
+
+        m=1
+
+        u*=2
+
+        while m<u:
+
+            m+=1
+
+            1+1
+
+        
+
+def izmjeri(imeF,n):
+
+    p=time()
+
+    imeF(n)
+
+    k=time()
+
+    rez=round(k-p,2)
+
+    return rez
+
+
+
+algoritmi=[ o1 , olog , on , onlogn , osqr ]
+
+nlst=[ 10**5 , 10**6 , 10**6 , 10**6 ]
+
+rlst=[["o1",0,0,0,0],["olog",0,0,0,0],["on",0,0,0,0],["onlogn",0,0,0,0],["osqr",0,0,0,0]]
+
+for a in range(len(algoritmi)):
+
+    for n in range(1,len(nlst)+1):
+
+        rlst[a][n]=izmjeri(algoritmi[a],nlst[n-1])
+
+for x in rlst:
+
+    print (x)
+
+        
+
+def rnzd(x,y):
+
+    if y==0:
+
+        return x
+
+    else:
+
+        return rnzd(y,x%y)
+
+
+
+def fibo(n):
+
+    if n==0:
+
+        return 0
+
+    elif n==1:
+
+        return 1
+
+    elif n>1:
+
+        return f(n-1)+f(n-2)

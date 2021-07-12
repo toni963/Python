@@ -1,0 +1,115 @@
+from time import time
+
+def bubbleSort(lst):
+
+	n = len(lst)
+
+	for i in range(n):
+
+		for j in range(0, n-i-1):
+
+			if lst[j] > lst[j+1] :
+
+				lst[j], lst[j+1] = lst[j+1], lst[j]
+
+
+
+
+
+
+
+def selectionSort(lst):
+
+    for sortID in range(len(lst)-1,0,-1):
+
+        maxID=0
+
+        for pol in range(1,sortID+1):
+
+            if lst[pol]>lst[maxID]:
+
+                maxID=pol
+
+        temp = lst[sortID]
+
+        lst[sortID] = lst[maxID]
+
+        lst[maxID] = temp
+
+
+
+
+
+def insertionSort(lst):
+
+    for i in range(1,len(lst)):
+
+        kljuc=lst[i]
+
+        pol=i
+
+        while pol>0 and lst[pol-1]>kljuc:
+
+            lst[pol]=lst[pol -1]
+
+            pol=pol-1
+
+            lst[pol]=kljuc
+
+
+
+
+
+def randomLista(n):
+
+        from random import randint
+
+        lista=[]
+
+        for i in range(n):
+
+                lista.append(randint(0,n-1))
+
+                return lista
+
+        
+
+rez=[["bubble",0,0,0,0],["selection",0,0,0,0],["insert",0,0,0,0]]
+
+a=int(input("Unesite velicinu liste: "))
+
+for i in range(1,5):
+
+        p=time()
+
+        bubbleSort(randomLista(a))
+
+        k=time()
+
+        rez[0][i]=round(k-p,2)
+
+
+
+        p=time()
+
+        selectionSort(randomLista(a))
+
+        k=time()
+
+        rez[1][i]=round(k-p,2)
+
+
+
+        p=time()
+
+        insertionSort(randomLista(a))
+
+        k=time()
+
+        rez[2][i]=round(k-p,2)
+
+        
+
+for clan in rez:
+
+        print(clan)

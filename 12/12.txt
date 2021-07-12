@@ -1,0 +1,103 @@
+def hash1(k,i=0):
+
+    k2=0
+
+    for znak in k:
+
+        k2+=ord(znak)
+
+    return(3*k2+i)%11
+
+def hash2(k,i=0):
+
+    k2=0
+
+    for znak in k:
+
+        k2+=ord(znak)
+
+    return(2*k2 + i**2)%11
+
+def hash3(k,i=0):
+
+    k2=0
+
+    for znak in k:
+
+        k2+=ord(znak)
+
+    return ((k2%10)+(i*(1+(k2%9))))%11
+
+    
+
+ulaz=["vlado vladic","iva ivic","ana anic","matko matic","tomica tomic","jure juric","ivana ivanovic","ratko ratic"]
+
+hashT=[]
+
+for i in range(11):
+
+    hashT.append ([i,""])
+
+for ime in ulaz:
+
+    i=0
+
+    while i<=(len(hashT)-1):
+
+        if ime[0].upper()>="A" and ime[0].upper()<="J":
+
+            h=hash1(ime,i)
+
+        elif ime[0].upper()>="K" and ime[0].upper()<="R":
+
+            h=hash2(ime,i)
+
+        else:
+
+            h=hash3(ime,i)
+
+        if hashT[h][1]=="":
+
+            hashT[h][1]=ime
+
+            print("osoba:",ime,"je zapisana na indeks",h,"u",i,"isprobavanja")
+
+            break
+
+        i+=1
+
+    else:
+
+        print("osoba nije zapisana,polje je puno")
+
+
+
+def nadji(ime):
+
+        i=0
+
+        while i<=(len(hashT)-1):           
+
+            if ime[0].upper()>="A" and ime[0].upper()<="J":
+
+                h=hash1(ime,i)
+
+            elif ime[0].upper()>="K" and ime[0].upper()<="R":
+
+                h=hash2(ime,i)
+
+            else:
+
+                h=hash3(ime,i)
+
+            if hashT[h][1]==ime:
+
+                print("osoba:",ime,"je nadena na indeksu",h,"u",i,"isprobavanja")
+
+                break
+
+            i+=1
+
+        else:
+
+            print("osoba nije pronadena")

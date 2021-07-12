@@ -1,0 +1,417 @@
+ZADATAK 1:
+
+class Node:
+
+
+
+    def __init__(self,broj):
+
+
+
+        self.value=broj
+
+
+
+        self.left=None
+
+
+
+        self.right=None
+
+
+
+
+
+
+
+    def addNode(self,broj):
+
+
+
+        if broj<=self.value:
+
+
+
+            if self.left==None:
+
+
+
+                self.left=Node(broj)
+
+
+
+            else:
+
+
+
+                self.left.addNode(broj)
+
+
+
+
+
+
+
+        else:
+
+
+
+            if self.right==None:
+
+
+
+                self.right=Node(broj)
+
+
+
+            else:
+
+
+
+                self.right.addNode(broj)
+
+
+
+
+
+
+
+
+
+
+
+BinaryTree=None
+
+
+
+n=3
+
+
+
+from random import randint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for i in range(n):
+
+
+
+    broj=randint(1,100)
+
+
+
+
+
+
+
+    if BinaryTree==None:
+
+
+
+        BinaryTree=Node(broj)
+
+
+
+    else:
+
+
+
+        BinaryTree.addNode(broj)
+
+
+
+
+
+
+
+def printInOrder(node):
+
+
+
+    if node!=None:
+
+
+
+        printInOrder(node.left)
+
+
+
+        print(node.value)
+
+
+
+        printInOrder(node.right)
+
+
+
+
+
+
+
+def printPreOrder(node):
+
+
+
+    if node!=None:
+
+
+
+        print(node.value)
+
+
+
+        printPreOrder(node.left)
+
+
+
+        printPreOrder(node.right)
+
+
+
+
+
+
+
+def printPostOrder(node):
+
+
+
+    if node!=None:
+
+
+
+        printPostOrder(node.left)
+
+
+
+        printPostOrder(node.right)
+
+
+
+        print(node.value)
+
+
+
+
+
+
+
+print("INORDER:")
+
+
+
+printInOrder(BinaryTree)
+
+
+
+print("PREORDER:")
+
+
+
+printPreOrder(BinaryTree)
+
+
+
+print("POSTORDER:")
+
+
+
+printPostOrder(BinaryTree)
+
+
+
+
+
+
+
+ZADATAK 2:
+
+
+
+
+
+from heapq import heappush,heappop
+
+
+
+gomila=[]
+
+
+
+
+
+
+
+def ps():
+
+
+
+    print("-"*30)
+
+
+
+
+
+
+
+def dodavanje(gomila):
+
+
+
+    ps()
+
+
+
+    a=randint(1,100)
+
+
+
+    print("Vrijednost novog elementa:",a)
+
+
+
+    heappush(gomila,a)
+
+
+
+    ps()
+
+
+
+
+
+
+
+def brisanje(gomila):
+
+
+
+    ps()
+
+
+
+    b=heappop(gomila)
+
+
+
+    print("Iz gomile je uklonjena vrijednost",b)
+
+
+
+    ps()
+
+
+
+
+
+
+
+def ispisGomile(gomila):
+
+
+
+    ps()
+
+
+
+    print("Podaci u gomili su:",gomila)
+
+
+
+    ps()
+
+
+
+
+
+
+
+while True:
+
+
+
+    try:
+
+
+
+        ps()
+
+
+
+        print("Glavni izbornik:")
+
+
+
+        print("1 - dodavanje novog elementa")
+
+
+
+        print("2 - brisanje elementa")
+
+
+
+        print("3 - ispis gomile")
+
+
+
+        print("0 - kraj programa")
+
+
+
+
+
+
+
+        unos=int(input("\nVas odabir: "))
+
+
+
+        if unos==1:
+
+
+
+            dodavanje(gomila)
+
+
+
+        if unos==2:
+
+
+
+            brisanje(gomila)
+
+
+
+        if unos==3:
+
+
+
+            ispisGomile(gomila)
+
+
+
+        if unos==5:
+
+
+
+            break
+
+
+
+    except:
+
+
+
+        print("Došlo je do greške!")

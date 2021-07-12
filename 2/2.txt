@@ -1,0 +1,181 @@
+class Artikl:
+
+    stanje=0
+
+    naziv=" "
+
+    def dodajNaStanje(self,broj):
+
+        self.stanje+=broj
+
+       
+
+    def oduzmiSaStanja(self,broj):
+
+        if self.stanje<broj:
+
+            print("Greska")
+
+        else:
+
+            self.stanje-=broj
+
+    def promjeniNaziv(self,noviNaziv):
+
+        self.naziv=noviNaziv
+
+
+
+
+
+class Opis:
+
+    naziv=" "
+
+    velicina=" "
+
+    boja=" "
+
+    def promjeniBoju (self,novaBoja):
+
+        self.boja=novaBoja
+
+        
+
+    def novaVelicina(self,broj):
+
+        self.velicina=broj
+
+
+
+    def promjeniNaziv(self,noviNaziv):
+
+        self.naziv=noviNaziv
+
+
+
+
+
+class Artikl:
+
+    Naziv=" "
+
+    Stanje=" "
+
+    def __init__(self,Naziv,Stanje):
+
+        self.stanje=Stanje
+
+        self.naziv=Naziv
+
+    def vratiStanje(self):
+
+        return self.stanje
+
+    def vratiNaziv(self):
+
+        return self.naziv
+
+    def stanje(self):
+
+        return Stanje
+
+
+
+    def __del__(self):
+
+        p="Artikl "+self.naziv+", stanje "+str(self.stanje)+" je pobrisan."
+
+        print(p)
+
+
+
+
+
+
+
+
+
+
+
+class KreditnaKartica:
+
+    korisnik=""
+
+    brKartice=""
+
+    banka=""
+
+    limit=0
+
+    dug=0
+
+    iznos=0
+
+
+
+    def __init__(self,Korisnik,BrKartice,Banka,Dug,Limit):
+
+        self.korisnik=Korisnik
+
+        self.brKartice=BrKartice
+
+        self.banka=Banka
+
+        self.limit=Limit
+
+        self.dug=Dug
+
+
+
+    def uplata(self,iznos):
+
+        if self.dug-iznos>=0:
+
+            self.dug-=iznos
+
+        else:
+
+            print("Dug je manji od 0.")
+
+      
+
+    def isplata(self,iznos):
+
+        if self.dug+iznos<=self.limit:
+
+            self.dug+=iznos
+
+        else:
+
+            print("Presli ste limit.")
+
+
+
+    def get_dug(self):
+
+        return self.dug
+
+            
+
+    def get_korisnik(self):
+
+        return self.korisnik
+
+    
+
+    def get_banka(self):
+
+        return self.banka
+
+    
+
+    def get_brKartice(self):
+
+        return self.brKartice
+
+    
+
+    def get_limit(self):
+
+        return self.limit

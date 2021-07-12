@@ -1,0 +1,251 @@
+from time import time
+
+def bubbleSort(lst):
+
+	n = len(lst)
+
+	for i in range(n):
+
+		for j in range(0, n-i-1):
+
+			if lst[j] > lst[j+1] :
+
+				lst[j], lst[j+1] = lst[j+1], lst[j]
+
+
+
+def selectionSort(lst):
+
+    for sortID in range(len(lst)-1,0,-1):
+
+        maxID=0
+
+        for pol in range(1,sortID+1):
+
+            if lst[pol]>lst[maxID]:
+
+                maxID=pol
+
+        temp = lst[sortID]
+
+        lst[sortID] = lst[maxID]
+
+        lst[maxID] = temp
+
+
+
+def insertionSort(lst):
+
+    for i in range(1,len(lst)):
+
+        kljuc=lst[i]
+
+        pol=i
+
+        while pol>0 and lst[pol-1]>kljuc:
+
+            lst[pol]=lst[pol -1]
+
+            pol=pol-1
+
+            lst[pol]=kljuc
+
+
+
+def mergeSort(lst):
+
+    if len(lst)>1:
+
+        sredina = len(lst)//2
+
+        Lpol = lst[:sredina]
+
+        Dpol = lst[sredina:]
+
+        
+
+        mergeSort(Lpol)
+
+        mergeSort(Dpol)
+
+        
+
+        Lb=0
+
+        Db=0
+
+        Sb=0
+
+        
+
+        while Lb < len(Lpol) and Db < len(Dpol):
+
+            if Lpol[Lb] < Dpol[Db]:
+
+                lst[Sb]=Lpol[Lb]
+
+                Lb=Lb+1
+
+            else:
+
+                lst[Sb]=Dpol[Db]
+
+                Db=Db+1
+
+            Sb=Sb+1
+
+        while Lb < len(Lpol):
+
+            lst[Sb]=Lpol[Lb]
+
+            Lb=Lb+1
+
+            Sb=Sb+1
+
+        while Db < len(Dpol):
+
+            lst[Sb]=Dpol[Db]
+
+            Db=Db+1
+
+            Sb=Sb+1
+
+        
+
+
+
+def quickSort(lst):
+
+    quickSortMain(lst,0,len(lst)-1)
+
+
+
+def quickSortMain(lst,prvi,zadnji):
+
+    if prvi<zadnji:
+
+        tocka = quickSortSplit(lst,prvi,zadnji)
+
+        quickSortMain(lst,prvi,tocka-1)
+
+        quickSortMain(lst,tocka+1,zadnji)
+
+
+
+def quickSortSplit(lst,prvi,zadnji):
+
+    pivot = lst[prvi]
+
+    Lc = prvi+1
+
+    Dc = zadnji
+
+    gotov=False
+
+    while not gotov:
+
+        while Lc <= Dc and lst[Lc] <= pivot:
+
+            Lc = Lc + 1
+
+        while lst[Dc] >= pivot and Dc >= Lc:
+
+            Dc = Dc - 1
+
+        if Dc < Lc:
+
+            gotov = True
+
+
+
+        else:
+
+            temp = lst[Lc]
+
+            lst[Lc] = lst[Dc]
+
+            lst[Dc] = temp
+
+    temp = lst[prvi]
+
+    lst[prvi] = lst[Dc]
+
+    lst[Dc] = temp
+
+    return Dc
+
+
+
+def randomLista(n):
+
+    from random import randint
+
+    lista=[]
+
+    for i in range(n):
+
+        lista.append(randint(0,n-1))
+
+    return lista
+
+            
+
+rez=[["bubble",0,0,0,0],["selection",0,0,0,0],["insert",0,0,0,0],['merge',0,0,0,0],['quick',0,0,0,0]]
+
+a=int(input("Unesite velicinu liste: "))
+
+for i in range(1,5):
+
+        p=time()
+
+        bubbleSort(randomLista(a))
+
+        k=time()
+
+        rez[0][i]=round(k-p,2)
+
+
+
+        p=time()
+
+        selectionSort(randomLista(a))
+
+        k=time()
+
+        rez[1][i]=round(k-p,2)
+
+
+
+        p=time()
+
+        insertionSort(randomLista(a))
+
+        k=time()
+
+        rez[2][i]=round(k-p,2)
+
+
+
+        p=time()
+
+        mergeSort(randomLista(a))
+
+        k=time()
+
+        rez[3][i]=round(k-p,2)
+
+
+
+        p=time()
+
+        quickSort(randomLista(a))
+
+        k=time()
+
+        rez[4][i]=round(k-p,2)
+
+        
+
+for clan in rez:
+
+        print(clan)

@@ -1,0 +1,125 @@
+class PovezanaLista:
+
+    def __init__(self):
+
+        self.glava = None
+
+        self.size = 0
+
+        self.rep=None
+
+    class Cvor:
+
+        def __init__(self, data):
+
+            self.data = data
+
+            self.iduciC = None
+
+##        def append(self, data):
+
+##            cvor = self.Cvor(data)
+
+##            if self.glava == None:
+
+##                self.glava = cvor
+
+##            else:
+
+##                trenutniC = self.glava
+
+##                while trenutniC.iduciC:
+
+##                    trenutniC = trenutniC.iduciC
+
+##                trenutniC.iduciC = cvor
+
+##            self.size += 1
+
+    def append(self,data):
+
+        cvor=self.Cvor(data)
+
+        if self.glava==None:
+
+            self.glava=cvor
+
+            self.rep=cvor
+
+        else:
+
+            self.rep.iduciC=cvor
+
+            self.rep=cvor
+
+        self.size+=1
+
+    def show(self):
+
+        trenutniC = self.glava
+
+        while trenutniC:
+
+            print(trenutniC.data)
+
+            trenutniC = trenutniC.iduciC
+
+
+
+    def delete(self, data):
+
+        trenutniC = self.glava
+
+        prethodniC = self.glava
+
+        while trenutniC:
+
+            if trenutniC.data == data:
+
+                if trenutniC == self.glava:
+
+                    self.glava = trenutniC.iduciC
+
+                    if self.rep==trenutniC:
+
+                        self.rep = trenutniC.iduciC
+
+                else:
+
+                    prethodniC.iduciC = trenutniC.iduciC
+
+                    if self.rep==trenutniC:
+
+                        self.rep = prethodniC
+
+                self.size -= 1
+
+                return "Pobrisan je clan"
+
+            prethodniC = trenutniC
+
+            trenutniC = trenutniC.iduciC
+
+        return "Clan ne postoji"
+
+    def search(self, data):
+
+        trenutniC=self.glava
+
+        while trenutniC:
+
+            if trenutniC.data==data:
+
+                return True
+
+            trenutniC=trenutniC.iduciC
+
+        return false
+
+    def clear(self,data):
+
+        self.glava=None
+
+        self.size=0
+
+        self.rep=None

@@ -1,0 +1,101 @@
+1. 
+print("Hello world")
+
+2. 
+x=input()
+print(x)
+
+3.
+x=input("Unesite broj: ")
+if int(x)%2==0:
+    print("Broj",x,"je paran.")
+else:
+    print("Broj",x,"je neparan.")
+
+4.
+x=int(input())
+y=int(input())
+print(x+y)
+
+5.
+x=float(input("Unesite duzinu prve katete: "))
+y=float(input("Unesite duzinu druge katete: "))
+c=(x**2+y**2)**(1/2)
+print("Duzina hipotenuze je:",c)
+
+6.
+x=float(input("Unesite duzinu polumjera: "))
+from math import pi
+o=2*x*pi
+print("Opseg kruznice je:",o)
+
+7.
+n=int(input("Unesite n: "))
+r=0
+for x in range(0,n+1):
+    r+=x
+print("Zbroj je:",r)
+
+8.
+z=0
+b=0
+while True:
+    x=int(input("Unesite broj: "))
+    if x==0:
+        break
+    else:
+        z+=x
+        b+=1
+print("Aritmeticka sredina je:",z/b)
+
+9.
+lista=[]
+while True:
+    x=int(input("Unesite broj: "))
+    if x==0:
+        break
+    else:
+        lista.append(x)
+lista.sort()
+for element in lista:
+    print(element)
+
+10.
+def z(x,y):
+    return x+y
+
+11.
+s=["Ana", "Ivan", "Marko", "Iva", "Tomica", "Jelena", "Andrea", "Edo"]
+p=["voli", "uci", "vjezba", "izbjegava", "sanja"]
+o=["fiziku", "matematiku", "programiranje", "kemiju", "filozofiju", "sociologiju"]
+
+for subjekt in s:
+    for predikat in p:
+        for objekt in o:
+            print(subjekt,predikat,objekt+".")
+
+12.
+n=int(input("Unesite n: "))
+if n>0:
+    z=0
+    for x in range(1,n+1):
+        z+=(x/(x+1))
+    print(round(z,2))
+
+else:
+    print("n<=0")
+
+13.
+def funk(email):
+    at=email.index("@")
+    dot=email.index(".")
+    return email[at+1:dot]
+
+14.
+def funk(lista):
+    p=len(lista)//2
+    for x in lista[:p]:
+        print(x, end=" ")
+    print()
+    for x in lista[p:]:
+        print(x, end=" ")

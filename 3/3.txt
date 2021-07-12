@@ -1,0 +1,223 @@
+class Vozilo:
+
+    __naziv=" "
+
+    __god=0
+
+    _brzina=0
+
+    
+
+    def __init__(self,Naziv,Godina):
+
+        self.__naziv=Naziv
+
+        self._brzina=0
+
+        if Godina<1950:
+
+            self.__god=1950
+
+        elif Godina>2020:
+
+            self.__god=2020
+
+        else:
+
+            self.__god=Godina
+
+    def getGod(self):
+
+        return self.__god
+
+    def getBrzina(self):
+
+        return self._brzina
+
+    def getNaziv(self):
+
+        return self.__naziv
+
+    def ubrzaj(self,_brzina):
+
+        self._brzina+=_brzina
+
+        return "Brzina je "+str(self._brzina)
+
+    def uspori(self,_brzina):
+
+        self._brzina-=_brzina
+
+        if self._brzina<0:
+
+            self._brzina=0
+
+        return "Brzina je "+str(self._brzina)
+
+                  
+
+class Automobil(Vozilo):
+
+    def __init__(self,Naziv,Godina):
+
+        super().__init__(Naziv,Godina)
+
+        self.__motorUG=False
+
+    def UGmotor(self):
+
+        self.__motorUG=not(self.__motorUG)
+
+        self._brzina=0
+
+    def ubrzaj(self,x):
+
+        if self.__motorUG==True:
+
+                return super().ubrzaj(x)
+
+        else:
+
+            return "Motor je ugasen"
+
+    def uspori(self,x):
+
+        if self.__motorUG==True:
+
+                return super().uspori(x)
+
+        else:
+
+            return "Motor je ugasen"
+
+
+
+        
+
+class Bicikl(Vozilo):
+
+    def __init__(self,Naziv,Godina):
+
+        super().__init__(Naziv,Godina)
+
+        self.__nogarGD=False
+
+    def GDnogar(self):
+
+        self.__nogarGD=not(self.__nogarGD)
+
+        if self.__nogarGD==True:
+
+            return "Nogar je spušten"
+
+        elif self.__nogarGD==False:
+
+            return "Nogar je dignut"
+
+
+
+class Motocikl(Automobil,Bicikl):
+
+    def __init__(self,Naziv,Godina):
+
+        Automobil.__init__(self,Naziv,Godina)
+
+        Bicikl.__init__(self,Naziv,Godina)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class KreditnaKartica:
+
+    korisnik=""
+
+    brKartice=""
+
+    banka=""
+
+    dug=0
+
+    limit=0
+
+    def _init_(self,KORISNIK,BROJKARTICE,BANKA,LIMIT):
+
+        self.korisnik=KORISNIK
+
+        self.brKartice=BROJKARTICE
+
+        self.banka=BANKA
+
+        self.limit=LIMIT
+
+    def uplata(self,iznos):
+
+        if self.dug-iznos>=0:
+
+            self.dug-=iznos
+
+        else:
+
+            print("Dug iznosi manje od uplacenog.")
+
+    def isplata(self,iznos):
+
+        if self.dug+iznos<=self.limit:
+
+            self.dug+=iznos
+
+        else:
+
+            return False
+
+    def getK(self):
+
+        return self.korisnik
+
+    def getBR(self):
+
+        return self.brKartice
+
+    def getB(self):
+
+        return self.banka
+
+    def getD(self):
+
+        return self.dug
+
+    def getL(self):
+
+        return self.limit
+
+class PKK(KreditnaKartica):
+
+    def _init_(self,KORISNIK,BROJKARTICE,BANKA,LIMIT,ks):
+
+        super()._init_(KORISNIK,BROJKARTICE,BANKA,LIMIT)
+
+        self.__ks=ks
+
+    def isplata(self,x):
+
+        if super().isplata(x)==False:
+
+            self.dug+=5
+
+    def dodajKamatu(self):
+
+        self.dug=self.dug+(self.dug*(self.__ks/100))

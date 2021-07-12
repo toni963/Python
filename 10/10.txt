@@ -1,0 +1,547 @@
+1.
+
+class Stog:
+
+    def __init__(self):
+
+        self.glava=None
+
+    class Cvor:
+
+        def __init__(self,data):
+
+            self.data=data
+
+            self.iC=None
+
+    def push(self,data):
+
+        cvor=self.Cvor(data)
+
+        if self.glava:
+
+            cvor.iC=self.glava
+
+            self.glava=cvor
+
+        else:
+
+            self.glava=cvor
+
+    def pop(self):
+
+        if self.glava:
+
+            t=self.glava.data
+
+            self.glava=self.glava.iC
+
+            return t
+
+    def show(self):
+
+        tC=self.glava
+
+        while tC:
+
+            print(tC.data)
+
+            tC=tC.iC
+
+
+
+def ps():
+
+    print("-"*30)
+
+s=Stog()
+
+while True:
+
+    try:
+
+        print("\n\nGlavni izbornik:")
+
+        print("\n1 - dodavanje novog elementa (push)")
+
+        print("\n2 - brisanje elementa (pop)")
+
+        print("\n3 - ispis stog")
+
+        print("\n4 - kraj programa")
+
+        x=int(input("\nVas odabir je:"))
+
+        if x==1:
+
+            ps()
+
+            y=input("Unesite novu vrijednost: ")
+
+            s.push(y)
+
+            ps()
+
+        elif x==2:
+
+            ps()
+
+            print("Pobrisan je: ",s.pop())
+
+        elif x==3:
+
+            ps()
+
+            s.show()
+
+            ps()
+
+        elif x==4:
+
+            ps()
+
+            print("KRAJ PROGRAMA")
+
+            ps()
+
+            break
+
+    except:
+
+        print("Doslo je do greske")
+
+2.
+
+class Red:
+
+    def __init__(self):
+
+        self.glava=None
+
+        self.rep=None
+
+        self.size=0
+
+    class Cvor:
+
+        def __init__(self,data):
+
+            self.data=data
+
+            self.iC=None
+
+    def push(self,data):
+
+        cvor=self.Cvor(data)
+
+        if self.rep:
+
+            self.rep.iC=cvor
+
+            self.rep=cvor
+
+        else:
+
+            self.glava=cvor
+
+            self.rep=cvor
+
+        self.size+=1
+
+    def pop(self):
+
+        if self.size==1:
+
+            t=self.glava.data
+
+            self.glava=None
+
+            self.rep=None
+
+            self.size-=1
+
+            return t
+
+        elif self.size>1:
+
+            t=self.glava.data
+
+            self.glava=self.glava.iC
+
+            self.size-=1
+
+            return t
+
+    def show(self):
+
+        tC=self.glava
+
+        while tC:
+
+            print(tC.data)
+
+            tC=tC.iC
+
+r=Red()
+
+
+
+from tkinter import *
+
+from tkinter import Listbox
+
+from tkinter import messagebox as mb
+
+
+
+p=Tk()
+
+x=StringVar()
+
+def popList():
+
+    rL.delete(0,"end")
+
+    tC=r.glava
+
+    while tC:
+
+        rL.insert("end",tC.data)
+
+        tC=tC.iC
+
+def fPush():
+
+    r.push(x.get())
+
+    unos.delete(0,"end")
+
+    popList()
+
+def fPop():
+
+    y=r.pop()
+
+    mb.showinfo("POP!",y)
+
+    popList()
+
+bPush=Button(p,text="Push",command=fPush)
+
+bPush.grid(column=0,row=0)
+
+
+
+bPop=Button(p,text="Pop",command=fPop)
+
+bPop.grid(column=0,row=1)
+
+
+
+l=Label(p,text="Red:")
+
+l.grid(column=0,row=2)
+
+
+
+rL=Listbox(p)
+
+rL.grid(column=0,row=3)
+
+
+
+unos=Entry(p,textvariable=x)
+
+unos.grid(column=1,row=0)
+
+
+
+p.mainloop()
+
+
+
+3.
+
+class Red:
+
+
+
+    def __init__(self):
+
+
+
+        self.glava=None
+
+
+
+        self.rep=None
+
+
+
+        self.size=0
+
+
+
+    class Cvor:
+
+
+
+        def __init__(self,data):
+
+
+
+            self.data=data
+
+
+
+            self.iC=None
+
+
+
+    def push(self,data):
+
+
+
+        cvor=self.Cvor(data)
+
+
+
+        if self.rep:
+
+
+
+            self.rep.iC=cvor
+
+
+
+            self.rep=cvor
+
+
+
+        else:
+
+
+
+            self.glava=cvor
+
+
+
+            self.rep=cvor
+
+
+
+        self.size+=1
+
+
+
+    def pop(self):
+
+
+
+        if self.size==1:
+
+
+
+            t=self.glava.data
+
+
+
+            self.glava=None
+
+
+
+            self.rep=None
+
+
+
+            self.size-=1
+
+
+
+            return t
+
+
+
+        elif self.size>1:
+
+
+
+            t=self.glava.data
+
+
+
+            self.glava=self.glava.iC
+
+
+
+            self.size-=1
+
+
+
+            return t
+
+
+
+    def show(self):
+
+
+
+        tC=self.glava
+
+
+
+        while tC:
+
+
+
+            print(tC.data)
+
+
+
+            tC=tC.iC
+
+
+
+r=Red()
+
+
+
+
+
+
+
+from tkinter import *
+
+
+
+from tkinter import Listbox
+
+
+
+from tkinter import messagebox as mb
+
+
+
+
+
+
+
+p=Tk()
+
+
+
+x=StringVar()
+
+
+
+##def popList():
+
+##
+
+##    rL.delete(0,"end")
+
+##
+
+##    tC=r.glava
+
+##
+
+##    while tC:
+
+##
+
+##        rL.insert("end",tC.data)
+
+##
+
+##        tC=tC.iC
+
+
+
+def fPush():
+
+    try:
+
+        r.push(x.get())
+
+        rL.insert("end",x.get())
+
+        unos.delete(0,"end")
+
+    except:
+
+        mb.showinfo("Greska","Greska")
+
+
+
+def fPop():
+
+    y=r.pop()
+
+    mb.showinfo("POP!",y)
+
+    rL.delete(0)
+
+
+
+bPush=Button(p,text="Push",command=fPush)
+
+
+
+bPush.grid(column=0,row=0)
+
+
+
+
+
+
+
+bPop=Button(p,text="Pop",command=fPop)
+
+
+
+bPop.grid(column=0,row=1)
+
+
+
+
+
+
+
+l=Label(p,text="Red:")
+
+
+
+l.grid(column=0,row=2)
+
+
+
+
+
+
+
+rL=Listbox(p)
+
+
+
+rL.grid(column=0,row=3)
+
+
+
+
+
+
+
+unos=Entry(p,textvariable=x)
+
+
+
+unos.grid(column=1,row=0)
+
+
+
+
+
+
+
+p.mainloop()
